@@ -4,6 +4,7 @@ A modern, responsive web application for automatically removing backgrounds from
 
 ## ✨ Features
 
+- 🎨 **Modern Landing Page** - Beautiful SaaS-style landing page with hero section, features, and CTAs
 - 🖼️ **Easy Image Upload** - Drag and drop or click to upload images
 - ⚡ **Automatic Background Removal** - Powered by Remove.bg API
 - 👁️ **Live Preview** - See your original and processed images side by side
@@ -18,6 +19,7 @@ A modern, responsive web application for automatically removing backgrounds from
 - **React 18** - UI library
 - **TypeScript** - Type safety
 - **Vite** - Build tool and dev server
+- **React Router** - Client-side routing
 - **Tailwind CSS** - Utility-first CSS framework
 - **Lucide React** - Icon library
 - **React Dropzone** - Drag and drop file uploads
@@ -71,21 +73,30 @@ Before you begin, ensure you have the following installed:
 
 ## 🎯 Usage
 
-1. **Get an API Key**
+1. **Start the Application**
+   - Run `npm run dev`
+   - Navigate to `http://localhost:5173`
+   - You'll see the beautiful landing page first
+
+2. **Get an API Key**
    - Sign up at [remove.bg](https://www.remove.bg/api)
    - Copy your API key
    - Add it to your `.env` file as `VITE_REMOVE_BG_API_KEY`
 
-2. **Upload an Image**
+3. **Use the App**
+   - Click "Get Started" or "Remove Background Now" from the landing page
+   - Or navigate directly to `/app` route
+
+4. **Upload an Image**
    - Click the upload area or drag and drop an image
    - Supported formats: JPG, PNG, WebP
    - Maximum file size: 12MB (Remove.bg API limit)
 
-3. **Process the Image**
+5. **Process the Image**
    - The app automatically processes your image
    - Wait for the background removal to complete
 
-4. **Download the Result**
+6. **Download the Result**
    - Preview the processed image
    - Click the download button to save your image
    - The downloaded file will be named `[original-name]_nobg.png`
@@ -108,19 +119,24 @@ bg-remover/
 │   │   ├── ImagePreview.tsx
 │   │   ├── ImageProcessor.tsx
 │   │   ├── ImageUploader.tsx
+│   │   ├── LandingPage.tsx  # Modern landing page
 │   │   ├── LoadingSpinner.tsx
 │   │   ├── ProcessingOverlay.tsx
 │   │   └── ThemeToggle.tsx
+│   ├── pages/             # Page components
+│   │   └── AppPage.tsx    # Main app page
 │   ├── context/           # React context providers
 │   │   └── ThemeContext.tsx
 │   ├── types/            # TypeScript type definitions
 │   │   └── index.ts
-│   ├── App.tsx           # Main app component
+│   ├── App.tsx           # Main app component with routing
 │   ├── main.tsx          # Application entry point
 │   └── index.css         # Global styles
 ├── .gitignore
+├── IMPROVEMENTS.md        # Suggested improvements document
 ├── index.html
 ├── package.json
+├── README.md             # This file
 ├── tailwind.config.js
 ├── tsconfig.json
 └── vite.config.ts

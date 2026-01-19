@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Upload, Image } from 'lucide-react';
-import Button from './Button';
+import { Upload } from 'lucide-react';
 
 interface ImageUploaderProps {
   onImageSelect: (file: File) => void;
@@ -30,11 +29,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
       <div 
         {...getRootProps()} 
         className={`
-          h-full min-h-[300px] border-2 border-dashed rounded-xl
-          flex flex-col items-center justify-center p-8 transition-all duration-300
+          h-full min-h-[300px] border-2 border-dashed rounded
+          flex flex-col items-center justify-center p-12 transition-all duration-300 cursor-pointer
           ${isDragActive 
-            ? 'border-primary-light bg-primary-light/5 dark:border-primary-dark dark:bg-primary-dark/5 scale-102' 
-            : 'border-gray-200 dark:border-gray-700 hover:border-primary-light dark:hover:border-primary-dark hover:scale-101'}
+            ? 'border-ps-blue bg-ps-blue/10 scale-102' 
+            : 'border-[#333] bg-[#161616] hover:border-ps-blue hover:bg-[#1a1a1a]'}
         `}
       >
         <input {...getInputProps()} />
@@ -43,27 +42,27 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
             <>
               <Upload 
                 size={48} 
-                className="text-primary-light dark:text-primary-dark mb-4 animate-bounce" 
+                className="text-ps-blue mb-4 animate-bounce" 
               />
-              <p className="text-xl font-semibold text-primary-light dark:text-primary-dark">
+              <p className="text-lg font-semibold text-ps-blue">
                 Drop to remove background
               </p>
             </>
           ) : (
             <>
-              <Image 
+              <Upload 
                 size={48} 
-                className="text-primary-light/60 dark:text-primary-dark/60 mb-4" 
+                className="text-gray-600 mb-4 group-hover:text-ps-blue transition-colors" 
               />
-              <p className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                Drop your image here
+              <h3 className="text-lg font-semibold mb-2 text-gray-300">
+                Drag & Drop images here
+              </h3>
+              <p className="text-xs text-gray-500 font-mono mb-6">
+                Max File Size: 12MB
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                or click to upload • JPEG/PNG up to 10MB
-              </p>
-              <Button type="primary">
-                Choose Image
-              </Button>
+              <button className="px-6 py-2 rounded bg-[#333] text-white font-medium text-sm hover:bg-ps-blue transition-colors">
+                Browse Disk
+              </button>
             </>
           )}
         </div>
